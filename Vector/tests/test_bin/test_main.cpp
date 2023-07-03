@@ -62,18 +62,18 @@ I attempt to reproduce with: a Seagull\n\
 I sleep, and dream of: The end of the C++ pool, and an Astek burning on a stake\n");
 }
 
-// Test(DomesticKoala, test_Vector_main)//, .init = redirect_all_stdout)
-// {
-//     KoalaAction     action ;
-//     DomesticKoala   dk(action);
+Test(DomesticKoala, test_Vector_main)//, .init = redirect_all_stdout)
+{
+    KoalaAction     action ;
+    DomesticKoala   dk(action);
 
-//     dk.learnAction('<', &KoalaAction::eat);
-//     dk.learnAction('>', &KoalaAction::goTo);
-//     dk.learnAction('#', &KoalaAction::sleep);
-//     dk.learnAction('X', &KoalaAction::reproduce);
+    dk.learnAction('<', &KoalaAction::eat);
+    dk.learnAction('>', &KoalaAction::goTo);
+    dk.learnAction('#', &KoalaAction::sleep);
+    dk.learnAction('X', &KoalaAction::reproduce);
 
-//     dk.doAction('>', "{EPITECH.}");
-//     dk.doAction('<', "a DoubleCheese");
-//     dk.doAction('X', "a Seagull");
-//     dk.doAction('#', "The end of the C++ pool, and an Astek burning on a stake");
-// }
+    dk.doAction('>', "{EPITECH.}");
+    dk.doAction('<', "a DoubleCheese");
+    dk.doAction('X', "a Seagull");
+    dk.doAction('#', "The end of the C++ pool, and an Astek burning on a stake");
+}
