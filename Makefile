@@ -23,21 +23,16 @@ PART1_SRC_TEST			=	$(PART1_TST_PATH)/$(NAME_VECTOR)_test.cpp
 TEST_NAME_VECTOR 		= 	test_$(NAME_VECTOR)
 
 ###############################################
-# PART2_PATH 				= 	./part2_Fruit
-# PART2_SRC_PATH			=	./part2_Fruit/src
-# PART2_TST_PATH			=	./part2_Fruit/tests
-# PART2_INC_PATH			=	./part2_Fruit/include
-# NAME_PARSER				=	Fruit
-# PART2_SRC				=	$(PART2_SRC_PATH)/Lemon.cpp \
-# 							$(PART2_SRC_PATH)/Banana.cpp \
-# 							$(PART2_SRC_PATH)/Fruit.cpp \
-# 							$(PART2_SRC_PATH)/FruitBox.cpp \
-# 							$(PART2_SRC_PATH)/Lime.cpp \
-# 							$(PART2_SRC_PATH)/LittleHand.cpp \
-# 							$(PART2_SRC_PATH)/Coconut.cpp
+PART2_PATH 				= 	./List
+PART2_SRC_PATH			=	./List/src
+PART2_TST_PATH			=	./List/tests
+PART2_INC_PATH			=	./List/include
+NAME_LIST				=	List
+PART2_SRC				=	$(PART1_SRC_PATH)/Event.cpp \
+							$(PART1_SRC_PATH)/EventManager.cpp
 
-# PART2_SRC_TEST			=	$(PART2_TST_PATH)/$(NAME_PARSER)_test.cpp
-# TEST_NAME_PARSER 		= 	test_$(NAME_PARSER)
+PART2_SRC_TEST			=	$(PART2_TST_PATH)/$(NAME_LIST)_test.cpp
+TEST_NAME_LIST 			= 	test_$(NAME_LIST)
 
 # ###############################################
 
@@ -69,7 +64,7 @@ clean					:
 							$(RM) $(OBJS)
 							@$(MAKE) $(CLEAN) -C $(PART0_TST_PATH)
 							@$(MAKE) $(CLEAN) -C $(PART1_TST_PATH)
-# @$(MAKE) $(CLEAN) -C $(PART2_TST_PATH)
+							@$(MAKE) $(CLEAN) -C $(PART2_TST_PATH)
 
 fclean					:	clean
 							$(RM) $(NAME) $(TEST_NAME)
@@ -77,8 +72,8 @@ fclean					:	clean
 							@$(MAKE) $(FCLEAN) -C $(PART0_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART1_TST_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART1_PATH)
-# @$(MAKE) $(FCLEAN) -C $(PART2_TST_PATH)
-# @$(MAKE) $(FCLEAN) -C $(PART2_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART2_TST_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART2_PATH)
 
 re						: 	fclean all
 
@@ -98,17 +93,17 @@ tests_run_vector		:	fclean
 							@$(MAKE) -C $(PART1_TST_PATH)
 							$(PART1_TST_PATH)/$(TEST_NAME_VECTOR)
 
-# part2 					: 	fclean
-# 							@$(MAKE) -C $(PART2_PATH)
-# 							$(PART2_PATH)/$(NAME_PARSER)
+List 					: 	fclean
+							@$(MAKE) -C $(PART2_PATH)
+							$(PART2_PATH)/$(NAME_LIST)
 
-# tests_run_part2			:	fclean
-# 							@$(MAKE) -C $(PART2_TST_PATH)
-# 							$(PART2_TST_PATH)/$(TEST_NAME_PARSER)
+tests_run_list			:	fclean
+							@$(MAKE) -C $(PART2_TST_PATH)
+							$(PART2_TST_PATH)/$(TEST_NAME_LIST)
 
 tests_run				:	fclean
 							@$(MAKE) tests_run_prser
 							@$(MAKE) tests_run_vector
-# @$(MAKE) tests_run_part2
+							@$(MAKE) tests_run_list
 
 .PHONY					: 	all clean fclean re parser tests_run_parser vector tests_run_vector tests_run
