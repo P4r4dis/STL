@@ -21,7 +21,7 @@ class                       Event
 
     private:
         unsigned int        _time;
-        const std::string   _event;
+        std::string         _event;
 };
 
 #endif //                   __EVENT__

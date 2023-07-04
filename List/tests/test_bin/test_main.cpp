@@ -37,9 +37,31 @@ void    redirect_all_stdout(void)
 //     em.addEvent(Event(11, "Wash my hands so that my keyboard doesn't smell like kebab"));
 // }
 
-Test(test, test)
+Test(Event, test_Event_constructor)
 {
-    cr_assert(1 == 1);
+    Event   event;
+
+    cr_assert(event.getTime() == 0);
+    cr_assert(event.getEvent() == "");
+
+    Event   customEvent(1, "custom event");
+
+    cr_assert(customEvent.getTime() == 1);
+    cr_assert(customEvent.getEvent() == "custom event");
+
+    Event   copyEvent(customEvent);
+
+    cr_assert(copyEvent.getTime() == 1);
+    cr_assert(copyEvent.getEvent() == "custom event");
+
+    copyEvent = event;
+    cr_assert(event.getTime() == 0);
+    cr_assert(event.getEvent() == "");
+
+    event.setTime(10);
+    cr_assert(event.getTime() == 10);
+    event.setEvent("event");
+    cr_assert(event.getEvent() == "event");
 }
 
 // Test(Main, test_main)//, .init = redirect_all_stdout)
