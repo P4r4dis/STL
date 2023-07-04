@@ -1,5 +1,5 @@
 #include "../test_include/test_EventManager.hpp"
-#include "../test_include/test_Event.hpp"
+// #include "../test_include/test_Event.hpp"
 
 #include <criterion/criterion.h>
 #include <criterion/new/assert.h>
@@ -62,6 +62,23 @@ Test(Event, test_Event_constructor)
     cr_assert(event.getTime() == 10);
     event.setEvent("event");
     cr_assert(event.getEvent() == "event");
+}
+
+Test(EventManager, test_EventManager_constructor)
+{
+    EventManager    em;
+
+    cr_assert(em.getEMTime() == 0);
+    cr_assert(em.getContainerEvent().empty() == true);
+
+    EventManager    copyEm(em);
+
+    cr_assert(copyEm.getEMTime() == 0);
+    cr_assert(copyEm.getContainerEvent().empty() == true);
+
+    em.setEMTime(10);
+    copyEm = em;
+    cr_assert(copyEm.getEMTime() == 10);
 }
 
 // Test(Main, test_main)//, .init = redirect_all_stdout)

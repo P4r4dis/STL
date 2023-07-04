@@ -19,5 +19,14 @@ class                       EventManager
         void                dumpEventsAt(unsigned int time) const;
         void                addTime(unsigned int time);
         void                addEventList(std::list<Event> &events);
+
+        unsigned int        getEMTime(void) const;
+        std::list<Event>    getContainerEvent(void) const;
+
+        void                setEMTime(unsigned int time);
+    
+    private:
+        unsigned int        _emTime;
+        std::list<Event>    _containerEvent;
 };
 #endif //                   __EVENTMANAGER__
