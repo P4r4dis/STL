@@ -3,9 +3,8 @@
 #include <list>
 #include <algorithm>
 #include <iterator>
-#include <iostream>
 
-#include "test_Event.hpp"
+#include "Event.hpp"
 
 
 class                       EventManager
@@ -33,4 +32,6 @@ class                       EventManager
         unsigned int        _currentTime;
         std::list<Event>    _containerEvent;
 };
+
+
 #endif //                   __EVENTMANAGER__

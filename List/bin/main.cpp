@@ -1,7 +1,7 @@
 #include "../include/Event.hpp"
 #include "../include/EventManager.hpp"
 
-static std::list<Event> createTodoList ()
+static std::list<Event> createTodoList()
 {
     std::list<Event> todo;
     todo.push_front(Event(19, "The vengeance of the Koala"));
@@ -14,7 +14,7 @@ static std::list<Event> createTodoList ()
     return todo;
 }
 
-static populateEvents(EventManager &em)
+static void populateEvents(EventManager &em)
 {
     em.addEvent(Event(10, "Eat"));
     em.addEvent(Event(12, "Finish the exercises"));
@@ -26,7 +26,7 @@ static populateEvents(EventManager &em)
 
 int     main()
 {
-    EventManagerem      em;
+    EventManager      em;
 
     populateEvents(em);
     em.dumpEvents();

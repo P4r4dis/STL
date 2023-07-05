@@ -93,7 +93,7 @@ tests_run_vector		:	fclean
 							@$(MAKE) -C $(PART1_TST_PATH)
 							$(PART1_TST_PATH)/$(TEST_NAME_VECTOR)
 
-List 					: 	fclean
+list 					: 	fclean
 							@$(MAKE) -C $(PART2_PATH)
 							$(PART2_PATH)/$(NAME_LIST)
 
