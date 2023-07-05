@@ -27,15 +27,15 @@ void    redirect_all_stdout(void)
 //     return todo;
 // }
 
-// static populateEvents(EventManager &em)
-// {
-//     em.addEvent(Event(10, "Eat"));
-//     em.addEvent(Event(12, "Finish the exercises"));
-//     em.addEvent(Event(12, "Understand the thing"));
-//     em.addEvent(Event(15, "Set the rights"));
-//     em.addEvent(Event(8, "Ask what the hell a const_iterator is"));
-//     em.addEvent(Event(11, "Wash my hands so that my keyboard doesn't smell like kebab"));
-// }
+static void populateEvents(EventManager &em)
+{
+    em.addEvent(Event(10, "Eat"));
+    em.addEvent(Event(12, "Finish the exercises"));
+    em.addEvent(Event(12, "Understand the thing"));
+    em.addEvent(Event(15, "Set the rights"));
+    em.addEvent(Event(8, "Ask what the hell a const_iterator is"));
+    em.addEvent(Event(11, "Wash my hands so that my keyboard doesn't smell like kebab"));
+}
 
 Test(Event, test_Event_constructor)
 {
@@ -81,13 +81,33 @@ Test(EventManager, test_EventManager_constructor)
     cr_assert(copyEm.getEMTime() == 10);
 }
 
+Test(EventManager, test_EventManager_addEvent, .init = redirect_all_stdout)
+{
+    EventManager     em;
+
+    populateEvents(em);
+
+    for (auto event : em.getContainerEvent()) 
+    {
+        std::cout << event.getTime() << ": " << event.getEvent() << std::endl;
+    }
+    cr_assert_stdout_eq_str("8: Ask what the hell a const_iterator is\n\
+10: Eat\n\
+11: Wash my hands so that my keyboard doesn't smell like kebab\n\
+12: Finish the exercises\n\
+12: Understand the thing\n\
+15: Set the rights\n");
+}
+
+
+
 // Test(Main, test_main)//, .init = redirect_all_stdout)
 // {
-//     EventManagerem      em;
+    // EventManagerem      em;
 
-//     populateEvents(em);
-//     em.dumpEvents();
-//     std::cout << "=====" << std::endl;
+    // populateEvents(em);
+    // em.dumpEvents();
+    // std::cout << "=====" << std::endl;
 
 //     // Following a massive rotten leaves of eucalyptus ingestion , all the exercises of the day are canceled .
 //     em.removeEventsAt(12);

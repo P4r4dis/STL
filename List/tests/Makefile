@@ -10,7 +10,7 @@ NAME			=	test_List
 
 INCFLAGS		+=	-I$(TEST_INC_PATH)
 CRITFLAGS		+=	--coverage -lcriterion --verbose
-CPPFLAGS		+=	-Wall -Wextra -Werror $(INCFLAGS) $(CRITFLAGS)
+CPPFLAGS		+=	-Wall -Wextra -Werror $(INCFLAGS) $(CRITFLAGS) --std=c++23
 
 
 SRCS			=	$(TEST_BIN_PATH)/test_main.cpp \

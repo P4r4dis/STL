@@ -1,6 +1,10 @@
 #ifndef                     __EVENTMANAGER__
     #define                 __EVENTMANAGER__
 #include <list>
+#include <algorithm>
+#include <iterator>
+#include <iostream>
+
 #include "test_Event.hpp"
 
 
@@ -26,7 +30,7 @@ class                       EventManager
         void                setEMTime(unsigned int time);
     
     private:
-        unsigned int        _emTime;
+        unsigned int        _currentTime;
         std::list<Event>    _containerEvent;
 };
 #endif //                   __EVENTMANAGER__
