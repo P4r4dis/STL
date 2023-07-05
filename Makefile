@@ -35,7 +35,16 @@ PART2_SRC_TEST			=	$(PART2_TST_PATH)/$(NAME_LIST)_test.cpp
 TEST_NAME_LIST 			= 	test_$(NAME_LIST)
 
 # ###############################################
+PART3_PATH 				= 	./Map
+PART3_SRC_PATH			=	./Map/src
+PART3_TST_PATH			=	./Map/tests
+PART3_INC_PATH			=	./Map/include
+NAME_MAP				=	Map
+PART3_SRC				=	$(PART3_SRC_PATH)/BF_Translator.cpp
 
+PART3_SRC_TEST			=	$(PART3_TST_PATH)/$(NAME_MAP)_test.cpp
+TEST_NAME_MAP 			= 	test_$(NAME_MAP)
+#################################################
 
 # BIN_PATH				=	./bin
 
@@ -65,6 +74,8 @@ clean					:
 							@$(MAKE) $(CLEAN) -C $(PART0_TST_PATH)
 							@$(MAKE) $(CLEAN) -C $(PART1_TST_PATH)
 							@$(MAKE) $(CLEAN) -C $(PART2_TST_PATH)
+							@$(MAKE) $(CLEAN) -C $(PART3_TST_PATH)
+
 
 fclean					:	clean
 							$(RM) $(NAME) $(TEST_NAME)
@@ -74,6 +85,8 @@ fclean					:	clean
 							@$(MAKE) $(FCLEAN) -C $(PART1_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART2_TST_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART2_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART3_TST_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART3_PATH)
 
 re						: 	fclean all
 
@@ -101,9 +114,18 @@ tests_run_list			:	fclean
 							@$(MAKE) -C $(PART2_TST_PATH)
 							$(PART2_TST_PATH)/$(TEST_NAME_LIST)
 
+map 					: 	fclean
+							@$(MAKE) -C $(PART3_PATH)
+							$(PART3_PATH)/$(NAME_MAP)
+
+tests_run_map			:	fclean
+							@$(MAKE) -C $(PART3_TST_PATH)
+							$(PART3_TST_PATH)/$(TEST_NAME_MAP)
+
 tests_run				:	fclean
 							@$(MAKE) tests_run_prser
 							@$(MAKE) tests_run_vector
 							@$(MAKE) tests_run_list
+							@$(MAKE) tests_run_map
 
 .PHONY					: 	all clean fclean re parser tests_run_parser vector tests_run_vector tests_run
