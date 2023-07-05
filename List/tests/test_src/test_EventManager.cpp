@@ -35,6 +35,22 @@ void                EventManager::addEvent(const Event &e)
     }
 }
 
+void                EventManager::removeEventsAt(unsigned int time)
+{
+    if (!_containerEvent.empty())
+    {
+        auto it = _containerEvent.begin();
+        while (it != _containerEvent.end())
+        {
+            if (it->getTime() == time)
+                it = _containerEvent.erase(it);
+            else
+                it++;
+        }
+
+    }
+}
+
 unsigned int        EventManager::getEMTime(void) const
 {
     return _currentTime;
