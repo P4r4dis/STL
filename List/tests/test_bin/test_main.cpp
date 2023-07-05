@@ -14,18 +14,18 @@ void    redirect_all_stdout(void)
     cr_redirect_stderr();
 }
 
-// static std::list<Event> createTodoList ()
-// {
-//     std::list<Event> todo;
-//     todo.push_front(Event(19, "The vengeance of the Koala"));
-//     todo.push_front(Event(20, "The return of the vengeance of the Koala"));
-//     todo.push_front(Event(21, "The come back of the vengeance of the Koala"));
-//     todo.push_front(Event(22, "The sequel to the vengeance."));
-//     todo.push_front(Event(9, "What the hell do you mean 'this morning' ?!"));
-//     todo.push_front(Event(1, "No, no, you're pushing it now ..."));
+static std::list<Event> createTodoList()
+{
+    std::list<Event> todo;
+    todo.push_front(Event(19, "The vengeance of the Koala"));
+    todo.push_front(Event(20, "The return of the vengeance of the Koala"));
+    todo.push_front(Event(21, "The come back of the vengeance of the Koala"));
+    todo.push_front(Event(22, "The sequel to the vengeance."));
+    todo.push_front(Event(9, "What the hell do you mean 'this morning' ?!"));
+    todo.push_front(Event(1, "No, no, you're pushing it now ..."));
     
-//     return todo;
-// }
+    return todo;
+}
 
 static void populateEvents(EventManager &em)
 {
@@ -137,11 +137,11 @@ Test(EventManager, test_EventManager_dumpEventsAt, .init = redirect_all_stdout)
     EventManager     em;
 
     populateEvents(em);
-    em.dumpEventsAt(8);
-    em.dumpEventsAt(10);
-    em.dumpEventsAt(11);
-    em.dumpEventsAt(12);
-    em.dumpEventsAt(15);
+    em.dumpEventAt(8);
+    em.dumpEventAt(10);
+    em.dumpEventAt(11);
+    em.dumpEventAt(12);
+    em.dumpEventAt(15);
 
     cr_assert_stdout_eq_str("8: Ask what the hell a const_iterator is\n\
 10: Eat\n\
@@ -151,7 +151,7 @@ Test(EventManager, test_EventManager_dumpEventsAt, .init = redirect_all_stdout)
 15: Set the rights\n");
 }
 
-Test(EventManager, test_EventManager_addTime)//, .init = redirect_all_stdout)
+Test(EventManager, test_EventManager_addTime, .init = redirect_all_stdout)
 {
    EventManager    em;
 
@@ -169,34 +169,57 @@ Test(EventManager, test_EventManager_addTime)//, .init = redirect_all_stdout)
     std::cout << "=====" << std::endl;
 }
 
-// Test(Main, test_main)//, .init = redirect_all_stdout)
-// {
-    // EventManager    em;
 
-    // populateEvents(em);
-    // em.dumpEvents();
-    // std::cout << "=====" << std::endl;
+Test(EventManager, test_EventManager_addEventList, .init = redirect_all_stdout)
+{
+   EventManager    em;
 
-    // // Following a massive rotten leaves of eucalyptus ingestion , all the exercises of the day are canceled .
-    // em.removeEventsAt(12);
-    // em.dumpEvents();
-    // std::cout << "=====" << std::endl;
+    populateEvents(em);
+    em.dumpEvents();
+    std::cout << "=====" << std::endl;
 
-    // // Hey , the time is flying !
-    // em.addTime(10);
-    // std::cout << "=====" << std::endl;
-    // em.dumpEvents();
-    // std::cout << "=====" << std::endl;
+    em.removeEventsAt(12);
+    em.dumpEvents();
+    std::cout << "=====" << std::endl;
 
-    // // Following the aforementioned ingestion and to help you improve your skill level , an exercises serie will be added .
-    // em.addEventList(createTodoList());
-    // em.dumpEvents();
-    // std::cout << "=====" << std::endl;
+    em.addTime(10);
+    std::cout << "=====" << std::endl;
+    em.dumpEvents();
+    std::cout << "=====" << std::endl;
+    em.addEventList(createTodoList());
+    em.dumpEvents();
+    std::cout << "=====" << std::endl;
+}
 
-    // // I forgot something , but what ??
-    // em.dumpEventAt(15);
-    // std::cout << "=====" << std::endl;
+
+Test(Main, test_main, .init = redirect_all_stdout)
+{
+    EventManager    em;
+
+    populateEvents(em);
+    em.dumpEvents();
+    std::cout << "=====" << std::endl;
+
+    // Following a massive rotten leaves of eucalyptus ingestion , all the exercises of the day are canceled .
+    em.removeEventsAt(12);
+    em.dumpEvents();
+    std::cout << "=====" << std::endl;
+
+    // Hey , the time is flying !
+    em.addTime(10);
+    std::cout << "=====" << std::endl;
+    em.dumpEvents();
+    std::cout << "=====" << std::endl;
+
+    // Following the aforementioned ingestion and to help you improve your skill level , an exercises serie will be added .
+    em.addEventList(createTodoList());
+    em.dumpEvents();
+    std::cout << "=====" << std::endl;
+
+    // I forgot something , but what ??
+    em.dumpEventAt(15);
+    std::cout << "=====" << std::endl;
     
-    // // And we finish the day with joy and good humour .
-    // em.addTime(14);
-// }
+    // And we finish the day with joy and good humour .
+    em.addTime(14);
+}

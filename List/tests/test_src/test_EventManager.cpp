@@ -27,9 +27,9 @@ void                EventManager::addEvent(const Event &e)
     {
         auto it = _containerEvent.begin();
         while ((it != _containerEvent.end()) && (it->getTime() <= e.getTime()))
-            ++it;
+            it++;
         // auto it = std::find_if(_containerEvent.begin(), _containerEvent.end(), [&e](const Event& event) {
-        //     return  event.getTime() > e.getTime();
+        //     return  event.getTime() >= e.getTime();
         // });
         _containerEvent.insert(it, e);
     }
@@ -59,7 +59,7 @@ void                EventManager::dumpEvents(void) const
     }
 }
 
-void                EventManager::dumpEventsAt(unsigned int time) const
+void                EventManager::dumpEventAt(unsigned int time) const
 {
     for (auto event : _containerEvent) 
     {
@@ -70,25 +70,33 @@ void                EventManager::dumpEventsAt(unsigned int time) const
 
 void                EventManager::addTime(unsigned int time)
 {
+    unsigned int newTime = _currentTime + time;
+
     for (auto event : _containerEvent) 
     {
-        if ((event.getTime() <= time))
+        if (event.getTime() > _currentTime && event.getTime() <= newTime)
         {
             std::cout << event.getEvent() << std::endl;
         }
     }
-
+    _currentTime = newTime;
     if (!_containerEvent.empty())
     {
         auto it = _containerEvent.begin();
         while (it != _containerEvent.end())
         {
-            if (it->getTime() <= time)
+            if (it->getTime() <= _currentTime)
                 it = _containerEvent.erase(it);
             else
                 it++;
         }
     }
+}
+
+void                EventManager::addEventList(const std::list<Event> &events)
+{
+    for (const auto &event : events)
+        addEvent(event);
 }
 
 unsigned int        EventManager::getEMTime(void) const

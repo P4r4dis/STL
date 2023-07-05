@@ -24,4 +24,5 @@ class                       Event
         std::string         _event;
 };
 
+
 #endif //                   __EVENT__

@@ -20,9 +20,9 @@ class                       EventManager
         void                addEvent(const Event &e);
         void                removeEventsAt(unsigned int time);
         void                dumpEvents(void) const;
-        void                dumpEventsAt(unsigned int time) const;
+        void                dumpEventAt(unsigned int time) const;
         void                addTime(unsigned int time);
-        void                addEventList(std::list<Event> &events);
+        void                addEventList(const std::list<Event> &events);
 
         unsigned int        getEMTime(void) const;
         std::list<Event>    getContainerEvent(void) const;
@@ -33,4 +33,6 @@ class                       EventManager
         unsigned int        _currentTime;
         std::list<Event>    _containerEvent;
 };
+
+
 #endif //                   __EVENTMANAGER__
