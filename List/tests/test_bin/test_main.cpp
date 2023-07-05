@@ -132,6 +132,25 @@ Test(EventManager, test_EventManager_dumpEvent, .init = redirect_all_stdout)
 15: Set the rights\n");
 }
 
+Test(EventManager, test_EventManager_dumpEventsAt, .init = redirect_all_stdout)
+{
+    EventManager     em;
+
+    populateEvents(em);
+    em.dumpEventsAt(8);
+    em.dumpEventsAt(10);
+    em.dumpEventsAt(11);
+    em.dumpEventsAt(12);
+    em.dumpEventsAt(15);
+
+    cr_assert_stdout_eq_str("8: Ask what the hell a const_iterator is\n\
+10: Eat\n\
+11: Wash my hands so that my keyboard doesn't smell like kebab\n\
+12: Finish the exercises\n\
+12: Understand the thing\n\
+15: Set the rights\n");
+}
+
 // Test(Main, test_main)//, .init = redirect_all_stdout)
 // {
     // EventManagerem      em;
