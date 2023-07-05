@@ -51,7 +51,7 @@ void                EventManager::removeEventsAt(unsigned int time)
     }
 }
 
-void                EventManager::dumpEvent(void) const
+void                EventManager::dumpEvents(void) const
 {
     for (auto event : _containerEvent) 
     {
@@ -67,6 +67,30 @@ void                EventManager::dumpEventsAt(unsigned int time) const
             std::cout << event.getTime() << ": " << event.getEvent() << std::endl;
     }
 }
+
+void                EventManager::addTime(unsigned int time)
+{
+    for (auto event : _containerEvent) 
+    {
+        if ((event.getTime() <= time))
+        {
+            std::cout << event.getEvent() << std::endl;
+        }
+    }
+
+    if (!_containerEvent.empty())
+    {
+        auto it = _containerEvent.begin();
+        while (it != _containerEvent.end())
+        {
+            if (it->getTime() <= time)
+                it = _containerEvent.erase(it);
+            else
+                it++;
+        }
+    }
+}
+
 unsigned int        EventManager::getEMTime(void) const
 {
     return _currentTime;

@@ -19,7 +19,7 @@ class                       EventManager
 
         void                addEvent(const Event &e);
         void                removeEventsAt(unsigned int time);
-        void                dumpEvent(void) const;
+        void                dumpEvents(void) const;
         void                dumpEventsAt(unsigned int time) const;
         void                addTime(unsigned int time);
         void                addEventList(std::list<Event> &events);

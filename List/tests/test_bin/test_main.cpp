@@ -115,13 +115,13 @@ Test(EventManager, test_EventManager_removeEventsAt, .init = redirect_all_stdout
 15: Set the rights\n");
 }
 
-Test(EventManager, test_EventManager_dumpEvent, .init = redirect_all_stdout)
+Test(EventManager, test_EventManager_dumpEvents, .init = redirect_all_stdout)
 {
     EventManager     em;
 
     populateEvents(em);
     em.removeEventsAt(12);
-    em.dumpEvent();
+    em.dumpEvents();
     // for (auto event : em.getContainerEvent()) 
     // {
     //     std::cout << event.getTime() << ": " << event.getEvent() << std::endl;
@@ -151,34 +151,52 @@ Test(EventManager, test_EventManager_dumpEventsAt, .init = redirect_all_stdout)
 15: Set the rights\n");
 }
 
+Test(EventManager, test_EventManager_addTime)//, .init = redirect_all_stdout)
+{
+   EventManager    em;
+
+    populateEvents(em);
+    em.dumpEvents();
+    std::cout << "=====" << std::endl;
+
+    em.removeEventsAt(12);
+    em.dumpEvents();
+    std::cout << "=====" << std::endl;
+
+    em.addTime(10);
+    std::cout << "=====" << std::endl;
+    em.dumpEvents();
+    std::cout << "=====" << std::endl;
+}
+
 // Test(Main, test_main)//, .init = redirect_all_stdout)
 // {
-    // EventManagerem      em;
+    // EventManager    em;
 
     // populateEvents(em);
     // em.dumpEvents();
     // std::cout << "=====" << std::endl;
 
-//     // Following a massive rotten leaves of eucalyptus ingestion , all the exercises of the day are canceled .
-//     em.removeEventsAt(12);
-//     em.dumpEvents();
-//     std::cout << "=====" << std::endl;
+    // // Following a massive rotten leaves of eucalyptus ingestion , all the exercises of the day are canceled .
+    // em.removeEventsAt(12);
+    // em.dumpEvents();
+    // std::cout << "=====" << std::endl;
 
-//     // Hey , the time is flying !
-//     em.addTime(10);
-//     std::cout << "=====" << std::endl;
-//     em.dumpEvents();
-//     std::cout << "=====" << std::endl;
+    // // Hey , the time is flying !
+    // em.addTime(10);
+    // std::cout << "=====" << std::endl;
+    // em.dumpEvents();
+    // std::cout << "=====" << std::endl;
 
-//     // Following the aforementioned ingestion and to help you improve your skill level , an exercises serie will be added .
-//     em.addEventList(createTodoList());
-//     em.dumpEvents();
-//     std::cout << "=====" << std::endl;
+    // // Following the aforementioned ingestion and to help you improve your skill level , an exercises serie will be added .
+    // em.addEventList(createTodoList());
+    // em.dumpEvents();
+    // std::cout << "=====" << std::endl;
 
-//     // I forgot something , but what ??
-//     em.dumpEventAt(15);
-//     std::cout << "=====" << std::endl;
+    // // I forgot something , but what ??
+    // em.dumpEventAt(15);
+    // std::cout << "=====" << std::endl;
     
-//     // And we finish the day with joy and good humour .
-//     em.addTime(14);
+    // // And we finish the day with joy and good humour .
+    // em.addTime(14);
 // }
