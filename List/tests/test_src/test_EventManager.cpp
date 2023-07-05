@@ -51,6 +51,14 @@ void                EventManager::removeEventsAt(unsigned int time)
     }
 }
 
+void                EventManager::dumpEvent(void) const
+{
+    for (auto event : _containerEvent) 
+    {
+        std::cout << event.getTime() << ": " << event.getEvent() << std::endl;
+    }
+}
+
 unsigned int        EventManager::getEMTime(void) const
 {
     return _currentTime;
