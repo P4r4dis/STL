@@ -38,3 +38,13 @@ Test(Ratatouille, test_Ratatouille_constructor)//, .init = redirect_all_stdout)
     cr_assert(rat2.getSpice() == 0);
     cr_assert(rat2.getSauce() == "");
 }
+
+Test(Ratatouille, test_Ratatouille_addVegetable)//, .init = redirect_all_stdout)
+{
+    Ratatouille     rat;
+
+    rat.addVegetable('T');
+
+    cr_assert(rat.getOstringstream() == "T");
+    cr_assert(rat.kooc() == "T");
+}

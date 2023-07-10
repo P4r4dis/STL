@@ -11,7 +11,7 @@ Ratatouille::Ratatouille(Ratatouille const &other) :
 Ratatouille::~Ratatouille(void)
 {}
 
-Ratatouille     &Ratatouille::operator=(const Ratatouille &rhs)
+Ratatouille         &Ratatouille::operator=(const Ratatouille &rhs)
 {
     if (this != &rhs)
     {
@@ -23,22 +23,40 @@ Ratatouille     &Ratatouille::operator=(const Ratatouille &rhs)
     return *this;
 }
 
-unsigned char   Ratatouille::getVegetable(void) const
+unsigned char       Ratatouille::getVegetable(void) const
 {
     return _vegetable;
 }
 
-unsigned int    Ratatouille::getCondiment(void) const
+unsigned int        Ratatouille::getCondiment(void) const
 {
     return _condiment;
 }
 
-double          Ratatouille::getSpice(void) const
+double              Ratatouille::getSpice(void) const
 {
     return _spice;
 }
 
-std::string     Ratatouille::getSauce(void) const
+std::string         Ratatouille::getSauce(void) const
 {
     return _sauce;
+}
+
+std::string         Ratatouille::getOstringstream(void) const
+{
+    return _oss.str();
+}
+
+Ratatouille     &Ratatouille::addVegetable(unsigned char vegetable)
+{
+    _vegetable = vegetable;
+    _oss << _vegetable;
+
+    return *this;
+}
+
+std::string     Ratatouille::kooc(void)
+{
+    return _oss.str();
 }
