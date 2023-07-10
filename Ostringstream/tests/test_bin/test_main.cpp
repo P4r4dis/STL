@@ -64,3 +64,11 @@ Test(Ratatouille, test_Ratatouille_addSpice)//, .init = redirect_all_stdout)
     rat.addVegetable('T').addCondiment(42).addSpice(123.321);
     cr_assert(rat.getOstringstream() == "T42123.321");
 }
+
+Test(Ratatouille, test_Ratatouille_addSauce)//, .init = redirect_all_stdout)
+{
+    Ratatouille     rat;
+    
+    rat.addVegetable('T').addCondiment(42).addSpice(123.321).addSauce("Tomato");
+    cr_assert(rat.getOstringstream() == "T42123.321Tomato");
+}
