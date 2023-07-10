@@ -20,6 +20,7 @@ class                       Ratatouille
 
         Ratatouille         &addVegetable(unsigned char vegetable);
         Ratatouille         &addCondiment(unsigned int condiment);
+        Ratatouille         &addSpice(double spice);
         std::string         kooc(void);
     private:
         unsigned char       _vegetable;

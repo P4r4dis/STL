@@ -64,6 +64,14 @@ Ratatouille     &Ratatouille::addCondiment(unsigned int condiment)
     return *this;
 }
 
+Ratatouille     &Ratatouille::addSpice(double spice)
+{
+    _spice = spice;
+    _oss << _spice;
+
+    return *this;
+}
+
 std::string     Ratatouille::kooc(void)
 {
     return _oss.str();
