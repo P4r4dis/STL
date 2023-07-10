@@ -48,3 +48,11 @@ Test(Ratatouille, test_Ratatouille_addVegetable)//, .init = redirect_all_stdout)
     cr_assert(rat.getOstringstream() == "T");
     cr_assert(rat.kooc() == "T");
 }
+
+Test(Ratatouille, test_Ratatouille_addCondiment)//, .init = redirect_all_stdout)
+{
+    Ratatouille     rat;
+    
+    rat.addVegetable('T').addCondiment(42);
+    cr_assert(rat.getOstringstream() == "T42");
+}

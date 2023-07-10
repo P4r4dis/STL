@@ -19,6 +19,7 @@ class                       Ratatouille
         std::string         getOstringstream(void) const;
 
         Ratatouille         &addVegetable(unsigned char vegetable);
+        Ratatouille         &addCondiment(unsigned int condiment);
         std::string         kooc(void);
     private:
         unsigned char       _vegetable;
