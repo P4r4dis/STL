@@ -5,7 +5,7 @@ SRC_PATH	=	./src
 TST_PATH	=	./tests
 INC_PATH	=	./include
 
-NAME		=	Map
+NAME		=	Ostringstream
 TEST_NAME 	= 	test_$(NAME)
 ##############################################
 
@@ -14,7 +14,7 @@ INCFLAGS	+=	-I $(INC_PATH)
 CPPFLAGS	+= -Wall -Wextra -Werror $(INCFLAGS) -std=c++23
 
 
-SRCS		=	$(SRC_PATH)/BF_Translator.cpp \
+SRCS		=	$(SRC_PATH)/Ratatouille.cpp \
 				$(BIN_PATH)/main.cpp
 
 SRC_TEST	=	$(TST_PATH)/$(NAME)_test.cpp

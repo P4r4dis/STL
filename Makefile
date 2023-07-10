@@ -45,6 +45,16 @@ PART3_SRC				=	$(PART3_SRC_PATH)/BF_Translator.cpp
 PART3_SRC_TEST			=	$(PART3_TST_PATH)/$(NAME_MAP)_test.cpp
 TEST_NAME_MAP 			= 	test_$(NAME_MAP)
 #################################################
+PART4_PATH 				= 	./Ostringstream
+PART4_SRC_PATH			=	./Ostringstream/src
+PART4_TST_PATH			=	./Ostringstream/tests
+PART4_INC_PATH			=	./Ostringstream/include
+NAME_OSTRINGSTREAM		=	Ostringstream
+PART4_SRC				=	$(PART4_SRC_PATH)/Ratatouille.cpp
+
+PART4_SRC_TEST			=	$(PART4_TST_PATH)/$(NAME_OSTRINGSTREAM)_test.cpp
+TEST_NAME_OSTRINGSTREAM = 	test_$(NAME_OSTRINGSTREAM)
+#################################################
 
 # BIN_PATH				=	./bin
 
@@ -75,6 +85,8 @@ clean					:
 							@$(MAKE) $(CLEAN) -C $(PART1_TST_PATH)
 							@$(MAKE) $(CLEAN) -C $(PART2_TST_PATH)
 							@$(MAKE) $(CLEAN) -C $(PART3_TST_PATH)
+							@$(MAKE) $(CLEAN) -C $(PART4_TST_PATH)
+
 
 
 fclean					:	clean
@@ -87,6 +99,8 @@ fclean					:	clean
 							@$(MAKE) $(FCLEAN) -C $(PART2_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART3_TST_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART3_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART4_TST_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART4_PATH)
 
 re						: 	fclean all
 
@@ -121,6 +135,14 @@ map 					: 	fclean
 tests_run_map			:	fclean
 							@$(MAKE) -C $(PART3_TST_PATH)
 							$(PART3_TST_PATH)/$(TEST_NAME_MAP)
+
+ostringstream 			: 	fclean
+							@$(MAKE) -C $(PART4_PATH)
+							$(PART4_PATH)/$(NAME_OSTRINGSTREAM)
+
+tests_run_ostringstream	:	fclean
+							@$(MAKE) -C $(PART4_TST_PATH)
+							$(PART4_TST_PATH)/$(TEST_NAME_OSTRINGSTREAM)
 
 tests_run				:	fclean
 							@$(MAKE) tests_run_prser

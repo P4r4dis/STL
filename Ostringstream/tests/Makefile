@@ -3,8 +3,8 @@ G++				=	g++
 TEST_SRC_PATH	=	./test_src
 TEST_INC_PATH	=	./test_include
 TEST_BIN_PATH	=	./test_bin
-TEST_SRC		=	$(TEST_SRC_PATH)/test_BF_Translator.cpp
-NAME			=	test_Map
+TEST_SRC		=	$(TEST_SRC_PATH)/test_Ratatouille.cpp
+NAME			=	test_Ostringstream
 #############################################
 
 INCFLAGS		+=	-I$(TEST_INC_PATH)
