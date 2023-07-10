@@ -1,11 +1,11 @@
 #include "../test_include/test_Ratatouille.hpp"
 
-Ratatouille::Ratatouille(void) :    _vegetable(' '), _condiment(0), _spice(0), _sauce("")
+Ratatouille::Ratatouille(void) :    _vegetable(' '), _condiment(0), _spice(0), _sauce(""), _oss("", std::ios_base::ate)
 {}
 
 Ratatouille::Ratatouille(Ratatouille const &other) : 
     _vegetable(other._vegetable), _condiment(other._condiment), _spice(other._spice),
-    _sauce(other._sauce)
+    _sauce(other._sauce), _oss(other._oss.str(), std::ios_base::ate)
 {}
 
 Ratatouille::~Ratatouille(void)
@@ -19,6 +19,7 @@ Ratatouille         &Ratatouille::operator=(const Ratatouille &rhs)
         _condiment = rhs._condiment;
         _spice = rhs._spice;
         _sauce = rhs._sauce;
+        _oss.str(rhs._oss.str());
     }
     return *this;
 }
