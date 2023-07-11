@@ -154,7 +154,7 @@ tests_run_ostringstream	:	fclean
 							@$(MAKE) -C $(PART4_TST_PATH)
 							$(PART4_TST_PATH)/$(TEST_NAME_OSTRINGSTREAM)
 
-Stack		 			: 	fclean
+stack		 			: 	fclean
 							@$(MAKE) -C $(PART5_PATH)
 							$(PART5_PATH)/$(NAME_STACK)
 
