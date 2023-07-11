@@ -55,7 +55,16 @@ PART4_SRC				=	$(PART4_SRC_PATH)/Ratatouille.cpp
 PART4_SRC_TEST			=	$(PART4_TST_PATH)/$(NAME_OSTRINGSTREAM)_test.cpp
 TEST_NAME_OSTRINGSTREAM = 	test_$(NAME_OSTRINGSTREAM)
 #################################################
+PART5_PATH 				= 	./Stack
+PART5_SRC_PATH			=	./Stack/src
+PART5_TST_PATH			=	./Stack/tests
+PART5_INC_PATH			=	./Stack/include
+NAME_STACK				=	Stack
+PART5_SRC				=	$(PART5_SRC_PATH)/MutantStack.cpp
 
+PART5_SRC_TEST			=	$(PART5_TST_PATH)/$(NAME_STACK)_test.cpp
+TEST_NAME_STACK 		= 	test_$(NAME_STACK)
+#################################################
 # BIN_PATH				=	./bin
 
 # NAME					=	Fruit
@@ -86,7 +95,7 @@ clean					:
 							@$(MAKE) $(CLEAN) -C $(PART2_TST_PATH)
 							@$(MAKE) $(CLEAN) -C $(PART3_TST_PATH)
 							@$(MAKE) $(CLEAN) -C $(PART4_TST_PATH)
-
+							@$(MAKE) $(CLEAN) -C $(PART5_TST_PATH)
 
 
 fclean					:	clean
@@ -101,7 +110,8 @@ fclean					:	clean
 							@$(MAKE) $(FCLEAN) -C $(PART3_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART4_TST_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART4_PATH)
-
+							@$(MAKE) $(FCLEAN) -C $(PART5_TST_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART5_PATH)
 re						: 	fclean all
 
 parser 					: 	fclean
@@ -144,10 +154,21 @@ tests_run_ostringstream	:	fclean
 							@$(MAKE) -C $(PART4_TST_PATH)
 							$(PART4_TST_PATH)/$(TEST_NAME_OSTRINGSTREAM)
 
+Stack		 			: 	fclean
+							@$(MAKE) -C $(PART5_PATH)
+							$(PART5_PATH)/$(NAME_STACK)
+
+tests_run_stack			:	fclean
+							@$(MAKE) -C $(PART5_TST_PATH)
+							$(PART5_TST_PATH)/$(TEST_NAME_STACK)
+
+
 tests_run				:	fclean
-							@$(MAKE) tests_run_prser
+							@$(MAKE) tests_run_parser
 							@$(MAKE) tests_run_vector
 							@$(MAKE) tests_run_list
 							@$(MAKE) tests_run_map
+							@$(MAKE) tests_run_ostringstream
+							@$(MAKE) tests_run_stack
 
 .PHONY					: 	all clean fclean re parser tests_run_parser vector tests_run_vector tests_run
